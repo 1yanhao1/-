@@ -1,4 +1,4 @@
-菜鸟教程css,javascript(复习）
+菜鸟教程css，(复习）
 CSS 指层叠样式表 (Cascading Style Sheets)，样式定义如何显示 HTML 元素，样式通常存储在样式表中，把样式添加到 HTML 4.0 中，是为了解决内容与表现分离的问题
 外部样式表可以极大提高工作效率，外部样式表通常存储在 CSS 文件中，多个样式定义可层叠为一
 选择器通常是您需要改变样式的 HTML 元素。每条声明由一个属性和一个值组成。属性（property）是您希望设置的样式属性（style attribute）。每个属性有一个值。属性和值被冒号分开
@@ -112,5 +112,133 @@ li a:hover:not(.active) {
     color: white;
 }
 </style>
-</head>
-<body>
+下拉菜单代码
+<style>
+/* 下拉按钮样式 */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* 容器 <div> - 需要定位下拉内容 */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* 下拉内容 (默认隐藏) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* 下拉菜单的链接 */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* 鼠标移上去后修改下拉菜单链接颜色 */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* 在鼠标移上去后显示下拉菜单 */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* 当下拉内容显示后修改下拉按钮的背景颜色 */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+</style>
+
+<div class="dropdown">
+  <button class="dropbtn">下拉菜单</button>
+  <div class="dropdown-content">
+    <a href="#">菜鸟教程 1</a>
+    <a href="#">菜鸟教程 2</a>
+    <a href="#">菜鸟教程 3</a>
+  </div>
+CSS 提示工具(Tooltip)
+可以使用 CSS3 transition 属性及 opacity 属性来实现提示工具的淡入效果:
+.tooltip .tooltiptext {
+    opacity: 0;
+    transition: opacity 1s;
+}
+左侧提示框/右侧箭头：
+.tooltip:hover .tooltiptext {
+    opacity: 1;
+}
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 100%; /* 提示工具右侧 */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+}
+显示在头部
+.tooltip .tooltiptext {
+    width: 120px;
+    bottom: 100%;
+    left: 50%; 
+    margin-left: -60px; /* 使用一半宽度 (120/2 = 60) 来居中提示工具 */
+}
+@media 规则允许在相同样式表为不同媒体设置不同的样式。
+.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px){
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .responsive {
+        width: 100%;
+    }
+}
+在 CSS3 中 border-radius 属性被用于创建圆角：
+CSS3 中的 box-shadow 属性被用来添加阴影
+#round
+{
+	-webkit-border-image:url(border.png) 30 30 round; /* Safari 5 and older */
+	-o-border-image:url(border.png) 30 30 round; /* Opera */
+	border-image:url(border.png) 30 30 round;
+}
+
+#stretch
+{
+	-webkit-border-image:url(border.png) 30 30 stretch; /* Safari 5 and older */
+	-o-border-image:url(border.png) 30 30 stretch; /* Opera */
+	border-image:url(border.png) 30 30 stretch;
+}
+background-Origin属性指定了背景图像的位置区域。content-box, padding-box,和 border-box区域内可以放置背景图像。
+CSS3中background-clip背景剪裁属性是从指定位置开始绘制。背景填充至边界的外边界
+通过使用 CSS3 渐变（gradients），你可以减少下载的事件和宽带的使用。此外，渐变效果的元素在放大时看起来效果更好，因为渐变（gradient）是由浏览器生成的。
+background: linear-gradient(direction, color-stop1, color-stop2, ...);
+CSS3 渐变也支持透明度（transparent），可用于创建减弱变淡的效果。为了添加透明度，我们使用 rgba() 函数来定义颜色结点。rgba() 函数中的最后一个参数可以是从 0 到 1 的值，它定义了颜色的透明度：0 表示完全透明，1 表示完全不透明。
+background: radial-gradient(center, shape size, start-color, ..., last-color);
+文本阴影指定了水平阴影，垂直阴影，模糊的距离，以及阴影的颜色
+h1
+{
+    text-shadow: 5px 5px 5px #FF0000;
+}
+文本效果 text-wrap	规定文本的换行规则。	word-break	规定非中日韩文本的换行规则 word-wrap	允许对长的不可分割的单词进行分割并换行到下一行。
+CSS3 @font-face 规则    font-family	name	必需。规定字体的名称。 src	URL	必需。定义字体文件的 URL。
