@@ -1,0 +1,177 @@
+菜鸟教程html,html5,css,javascript（复习)
+超文本标记语言（英语：HyperText Markup Language，简称：HTML）是一种用于创建网页的标准标记语言   HTML 编辑器
+<h1>这是一个标题</h1> 请确保将 HTML标题标签只用于标题。不要仅仅是为了生成粗体或大号的文本而使用标题。搜索引擎使用标题为您的网页的结构和内容编制索引
+<p>这是一个段落。</p>
+<a href="http://www.runoob.com">这是一个链接</a>，target
+<img src="/images/logo.png" width="258" height="39" />
+HTML 元素以开始标签起始,HTML 元素以结束标签终止,元素的内容是开始标签与结束标签之间的内容,某些 HTML 元素具有空内容（empty content）,
+空元素在开始标签中进行关闭（以开始标签的结束而结束）,大多数 HTML 元素可拥有属性
+<br/> 换行 在不产生一个新段落的情况下进行换行（新行）
+推荐使用小写
+<html> 元素定义了整个 HTML 文档  <body> 元素定义了 HTML 文档的主体
+HTML 元素可以设置属性，属性可以在元素中添加附加信息，属性一般描述于开始标签，属性总是以名称/值对的形式出现，比如：name="value"。
+class	为html元素定义一个或多个类名（classname）(类名从样式文件引入)，id	定义元素的唯一id，style	规定元素的行内样式（inline style），
+title	描述了元素的额外信息 (作为工具条使用)
+<hr/> 标签在 HTML 页面中创建水平线
+<!-- 这是一个注释 -->
+当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。
+HTML 格式化标签<b>	定义粗体文本 <em>	定义着重文字 <i>	定义斜体字 <small>	定义小号字 <strong>	定义加重语气 <sub>	定义下标字 <sup>	定义上标字
+<ins>	定义插入字 <del>	定义删除字 <code> <abbr>	定义缩写 <address>	定义地址 <bdo>	定义文字方向 <blockquote>	定义长的引用 <q>	定义短的引用语
+<cite>	定义引用、引证 <dfn>	定义一个定义项目。
+<head> 元素包含了所有的头部标签元素。在 <head>元素中你可以插入脚本（scripts）, 样式文件（CSS），及各种meta信息。
+<title> 标签定义了不同文档的标题。<title> 在 HTML/XHTML 文档中是必须的。<title> 元素:定义了浏览器工具栏的标题
+当网页添加到收藏夹时，显示在收藏夹中的标题，显示在搜索引擎结果页面的标题
+<base> 标签描述了基本的链接地址/链接目标，该标签作为HTML文档中所有的链接标签的默认链接:
+<link> 标签定义了文档与外部资源之间的关系。<link> 标签通常用于链接到样式表:
+<style> 标签定义了HTML文档的样式文件引用地址.在<style> 元素中你也可以直接添加样式来渲染 HTML 文档
+meta标签描述了一些基本的元数据。<meta> 标签提供了元数据.元数据也不显示在页面上，但会被浏览器解析。META 元素通常用于指定网页的描述，关键词，文件的最后修改时间，作者，和其他元数据。
+元数据可以使用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他Web服务
+<script>标签用于加载脚本文件，如： JavaScript。
+CSS 是在 HTML 4 开始使用的,是为了更好的渲染HTML元素而引入的.CSS 可以通过以下方式添加到HTML中:内联样式- 在HTML元素中使用"style" 属性
+<p style="font-family:arial;color:red;font-size:20px;">一个段落。<h1 style="text-align:center;">居中对齐的标题</h1>
+</p>内部样式表 -在HTML文档头部 <head> 区域使用<style> 元素来包含CSS，
+<style type="text/css">
+body {background-color:yellow;}
+p {color:blue;}
+外部引用 - 使用外部 CSS 文件，最好的方式是通过外部引用CSS文件.
+<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+HTML 图像- Alt属性，alt 属性用来为图像定义一串预备的可替换的文本。图片作为链接使用，图片浮动，图片区域链接：
+<map name="planetmap">
+  <area shape="rect" coords="0,0,82,126" alt="Sun" href="sun.htm">
+  <area shape="circle" coords="90,58,3" alt="Mercury" href="mercur.htm">
+  <area shape="circle" coords="124,58,8" alt="Venus" href="venus.htm">
+</map>
+表格由 <table> 标签来定义。每个表格均有若干行（由 <tr> 标签定义），每行被分割为若干单元格（由 <td> 标签定义）。字母 td 指表格数据（table data），
+即数据单元格的内容。数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。表格的表头使用 <th> 标签进行定义，
+无序列表是一个项目的列表，此列项目使用粗体圆点（典型的小黑圆圈）进行标记。无序列表使用 <ul> 标签  <li>,<ul style="list-style-type:square">
+有序列表也是一列项目，列表项目使用数字进行标记。 有序列表始于 <ol> 标签。每个列表项始于 <li> 标签。列表项使用数字来标记。<ol type="i">
+定义列表以 <dl> 标签开始。每个自定义列表项以 <dt> 开始。每个自定义列表项的定义以 <dd> 开始。
+HTML <div> 元素是块级元素，它可用于组合其他 HTML 元素的容器。<div> 元素没有特定的含义。除此之外，由于它属于块级元素，浏览器会在其前后显示折行。
+如果与 CSS 一同使用，<div> 元素可用于对大的内容块设置样式属性。<div> 元素的另一个常见的用途是文档布局。它取代了使用表格定义布局的老式方法。
+使用 <table> 元素进行文档布局不是表格的正确用法。<table> 元素的作用是显示表格化的数据。
+TML <span> 元素是内联元素，可用作文本的容器,<span> 元素也没有特定的含义。当与 CSS 一同使用时，<span> 元素可用于为部分文本设置样式属性。
+表单是一个包含表单元素的区域。表单元素是允许用户在表单中输入内容,比如：文本域(textarea)、下拉列表、单选框(radio-buttons)、复选框(checkboxes)等等。
+表单使用表单标签 <form> 来设置
+文本域通过<input type="text"> 标签来设定，当用户要在表单中键入字母、数字等内容时，就会用到文本域<input type="radio"> 标签定义了表单单选框选项,
+<input type="checkbox"> 定义了复选框. 用户需要从若干给定的选择中选取一个或若干选项。<input type="submit"> 定义了提交按钮:
+<form name="input" action="html_form_action.php" method="get">
+Username: <input type="text" name="user">
+<input type="submit" value="Submit">
+</form>
+下拉列表：
+<form action="">
+<select name="cars">
+<option value="volvo">Volvo</option>
+<option value="saab">Saab</option>
+<option value="fiat" selected>Fiat</option>
+<option value="audi">Audi</option>
+</select>
+</form>
+通过使用框架，你可以在同一个浏览器窗口中显示不止一个页面。<iframe src="URL"></iframe>
+HTML<noscript> 标签提供无法使用脚本时的替代内容，比方在浏览器禁用脚本时，或浏览器不支持客户端脚本时。 
+颜色由一个十六进制符号来定义，这个符号由红色、绿色和蓝色的值组成（RGB）。每种颜色的最小值是0（十六进制：#00）。最大值是255（十六进制：#FF）。
+ HTML 中，某些字符是预留的。在 HTML 中不能使用小于号（<）和大于号（>），这是因为浏览器会误认为它们是标签。
+ 如果希望正确地显示预留字符，我们必须在 HTML 源代码中使用字符实体（character entities）。发音符号是加到字母上的一个"glyph(字形)"。
+URL - 统一资源定位器scheme://host.domain:port/path/filename
+scheme - 定义因特网服务的类型。最常见的类型是 http,host - 定义域主机（http 的默认主机是 www）,domain - 定义因特网域名，比如 runoob.com
+:port - 定义主机上的端口号（http 的默认端口号是 80）,path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。,filename - 定义文档/资源的名称
+http	超文本传输协议	以 http:// 开头的普通网页。不加密。https	安全超文本传输协议	安全网页，加密所有信息交换。ftp	文件传输协议	用于将文件下载或上传至网站
+URL 只能使用 ASCII 字符集.来通过因特网进行发送。由于 URL 常常会包含 ASCII 集合之外的字符，URL 必须转换为有效的 ASCII 格式。
+URL 编码使用 "%" 其后跟随两位的十六进制数来替换非 ASCII 字符。URL 不能包含空格。URL 编码通常使用 + 来替换空格。
+<!doctype> 声明必须位于 HTML5 文档中的第一行,对于中文网页需要使用 <meta charset="utf-8"> 声明编码，否则会出现乱码
+现代的浏览器都支持 HTML5。此外，所有浏览器，包括旧的和最新的，对无法识别的元素会作为内联元素自动处理。正因为如此，你可以 "教会" 浏览器处理 "未知" 的 HTML 元素
+Internet Explorer 8 及更早 IE 版本的浏览器不支持以上的方式。可以使用 Sjoerd Visscher 创建的 "HTML5 Enabling JavaScript", " shiv" 来解决该问题:
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+html5shiv.js 引用代码必须放在 <head> 元素中，因为 IE 浏览器在解析 HTML5 新元素时需要先加载该文件
+HTML5 <canvas> 元素用于图形的绘制，通过脚本 (通常是JavaScript)来完成.<canvas> 标签只是图形容器，您必须使用脚本来绘制图形。
+首先，找到 <canvas> 元素:var c=document.getElementById("myCanvas");
+然后，创建 context 对象：var ctx=c.getContext("2d");
+getContext("2d") 对象是内建的 HTML5 对象，拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法。
+SVG 指可伸缩矢量图形 (Scalable Vector Graphics),SVG 用于定义用于网络的基于矢量的图形,SVG 使用 XML 格式定义图形,SVG 图像在放大或改变尺寸的情况下其图形质量不会有损失
+最适合带有大型渲染区域的应用程序（比如谷歌地图）复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）不适合游戏应用
+SVG 是一种使用 XML 描述 2D 图形的语言。Canvas 通过 JavaScript 来绘制 2D 图形。
+SVG 基于 XML，这意味着 SVG DOM 中的每个元素都是可用的。您可以为某个元素附加 JavaScript 事件处理器。在 SVG 中，每个被绘制的图形均被视为对象。如果 SVG 对象的属性发生变化，那么浏览器能够自动重现图形。
+Canvas 是逐像素进行渲染的。在 canvas 中，一旦图形被绘制完成，它就不会继续得到浏览器的关注。如果其位置发生变化，那么整个场景也需要重新绘制，包括任何或许已被图形覆盖的对象。
+MathML 是数学标记语言，是一种基于XML（标准通用标记语言的子集）的标准，用来在互联网上书写数学符号和公式的置标语言。
+拖放（Drag 和 drop）是 HTML5 标准的组成部分
+<script>
+function allowDrop(ev)
+{
+    ev.preventDefault();
+}
+ 
+function drag(ev)
+{
+    ev.dataTransfer.setData("Text",ev.target.id);
+}
+ 
+function drop(ev)
+{
+    ev.preventDefault();
+    var data=ev.dataTransfer.getData("Text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+ 
+<p>拖动 RUNOOB.COM 图片到矩形框中:</p>
+ 
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br>
+<img id="drag1" src="/images/logo.png" draggable="true" ondragstart="drag(event)" width="336" height="69">
+ 
+</body>
+HTML5 Geolocation（地理定位）用于定位用户的位置
+var x=document.getElementById("demo");
+function getLocation()
+{
+    if (navigator.geolocation)
+    {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+    else
+    {
+        x.innerHTML="该浏览器不支持获取地理位置。";
+    }
+}
+ 
+function showPosition(position)
+{
+    x.innerHTML="纬度: " + position.coords.latitude + 
+    "<br>经度: " + position.coords.longitude;    
+}
+function showError(error)
+{
+    switch(error.code) 
+    {
+        case error.PERMISSION_DENIED:
+            x.innerHTML="用户拒绝对获取地理位置的请求。"
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML="位置信息是不可用的。"
+            break;
+        case error.TIMEOUT:
+            x.innerHTML="请求用户地理位置超时。"
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML="未知错误。"
+            break;
+    }
+}
+function showPosition(position)
+{
+    var latlon=position.coords.latitude+","+position.coords.longitude;
+ 
+    var img_url="http://maps.googleapis.com/maps/api/staticmap?center="
+    +latlon+"&zoom=14&size=400x300&sensor=false";
+    document.getElementById("mapholder").innerHTML="<img src='"+img_url+"'>";
+}
+HTML5 <video> 和 <audio> 元素同样拥有方法、属性和事件。
+<video> 和 <audio>元素的方法、属性和事件可以使用JavaScript进行控制.
+其中的方法用于播放、暂停以及加载等。其中的属性（比如时长、音量等）可以被读取或设置。其中的 DOM 事件能够通知您，比方说，<video> 元素开始播放、已暂停，已停止，等等。
+HTML5 拥有多个新的表单输入类型。这些新特性提供了更好的输入控制和验证。
