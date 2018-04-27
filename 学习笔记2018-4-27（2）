@@ -1,0 +1,89 @@
+菜鸟教程jquery(复习）
+jQuery 语法是通过选取 HTML 元素，并对选取的元素执行某些操作。基础语法： $(selector).action()
+CDN内容分发网络
+$(document).ready(function(){
+ 
+   // 开始写 jQuery 代码...
+ 
+});
+为了防止文档在完全加载（就绪）之前运行 jQuery 代码，即在 DOM 加载完成后才可以对 DOM 进行操作
+jQuery 选择器基于元素的 id、类、类型、属性、属性值等"查找"（或选择）HTML 元素。 
+它基于已经存在的 CSS 选择器，除此之外，它还有一些自定义的选择器。
+$("*")	选取所有元素      $(this)	选取当前 HTML 元素	
+$("p.intro")	选取 class 为 intro 的 <p> 元素	     $("p:first")	选取第一个 <p> 元素	
+$("ul li:first")	选取第一个 <ul> 元素的第一个 <li> 元素   $("ul li:first-child")	选取每个 <ul> 元素的第一个 <li> 元素	
+$("[href]")	选取带有 href 属性的元素	 $("a[target='_blank']")	选取所有 target 属性值等于 "_blank" 的 <a> 元素	
+$("a[target!='_blank']")	选取所有 target 属性值不等于 "_blank" 的 <a> 元素	
+$(":button")	选取所有 type="button" 的 <input> 元素 和 <button> 元素	
+$("tr:even")	选取偶数位置的 <tr> 元素	  $("tr:odd")	选取奇数位置的 <tr> 元素
+鼠标事件	键盘事件	表单事件	文档/窗口事件
+click	keypress	submit	load
+dblclick	keydown	change	resize
+mouseenter	keyup	focus	scroll
+mouseleave	 	blur	unload
+hover  focus
+jQuery hide() 和 show()  jQuery toggle()
+通过 jQuery，您可以实现元素的淡入淡出效果。jQuery 拥有下面四种 fade 方法：fadeIn() fadeOut() fadeToggle()  fadeTo()
+通过 jQuery，您可以在元素上创建滑动效果。jQuery 拥有以下滑动方法：slideDown() slideUp() slideToggle()
+jQuery animate() 方法用于创建自定义动画。语法：$(selector).animate({params},speed,callback);
+当使用 animate() 时，必须使用 Camel 标记法书写所有的属性名，比如，必须使用 paddingLeft 而不是 padding-left。
+可以用 animate() 方法来操作所有 CSS 属性
+也可以定义相对值（该值相对于元素的当前值）。需要在值的前面加上 += 或 -=：
+默认情况下，所有 HTML 元素都有一个静态位置，且无法移动。如需对位置进行操作，要记得首先把元素的 CSS position 属性设置为 relative、fixed 或 absolute！
+jQuery 提供针对动画的队列功能
+jQuery stop() 方法用于停止动画或效果，在它们完成之前。stop() 方法适用于所有 jQuery 效果函数，包括滑动、淡入淡出和自定义动画
+Callback 函数在当前动画 100% 完成之后执行。
+Chaining 允许我们在一条语句中运行多个 jQuery 方法（在相同的元素上）
+三个简单实用的用于 DOM 操作的 jQuery 方法：
+text() - 设置或返回所选元素的文本内容 html() - 设置或返回所选元素的内容（包括 HTML 标记） val() - 设置或返回表单字段的值
+jQuery attr() 方法用于获取属性值。
+添加新的 HTML 内容
+append() - 在被选元素的结尾插入内容
+prepend() - 在被选元素的开头插入内容
+after() - 在被选元素之后插入内容
+before() - 在被选元素之前插入内容
+remove() - 删除被选元素（及其子元素）jQuery remove() 方法也可接受一个参数，允许您对被删元素进行过滤
+empty() - 从被选元素中删除子元素
+jQuery 拥有若干进行 CSS 操作的方法。
+addClass() - 向被选元素添加一个或多个类
+removeClass() - 从被选元素删除一个或多个类
+toggleClass() - 对被选元素进行添加/删除类的切换操作
+css() - 设置或返回样式属性
+jQuery 提供多个处理尺寸的重要方法：
+width() height() innerWidth() innerHeight() outerWidth() outerHeight()
+Query 遍历，意为"移动"，用于根据其相对于其他元素的关系来"查找"（或选取）HTML 元素。以某项选择开始，并沿着这个选择移动，直到抵达您期望的元素为止。
+这些 jQuery 方法很有用，它们用于向上遍历 DOM 树：
+parent() parents() parentsUntil()
+下面是两个用于向下遍历 DOM 树的 jQuery 方法：
+children()  find()
+缩小搜索元素的范围
+三个最基本的过滤方法是：first(), last() 和 eq()，它们允许您基于其在一组元素中的位置来选择一个特定的元素。
+其他过滤方法，比如 filter() 和 not() 允许您选取匹配或不匹配某项指定标准的元素
+AJAX = 异步 JavaScript 和 XML（Asynchronous JavaScript and XML）。
+简短地说，在不重载整个网页的情况下，AJAX 通过后台加载数据，并在网页上进行显示。
+jQuery load() 方法是简单但强大的 AJAX 方法。load() 方法从服务器加载数据，并把返回的数据放入被选元素中$(selector).load(URL,data,callback);
+可选的 callback 参数规定当 load() 方法完成后所要允许的回调函数。回调函数可以设置不同的参数：
+responseTxt - 包含调用成功时的结果内容 statusTXT - 包含调用的状态xhr - 包含 XMLHttpRequest 对象
+jQuery get() 和 post() 方法用于通过 HTTP GET 或 POST 请求从服务器请求数据。
+noConflict() 方法会释放对 $ 标识符的控制，这样其他脚本就可以使用它了。当然，您仍然可以通过全名替代简写的方式来使用 jQuery：
+$.noConflict();
+jQuery(document).ready(function(){
+  jQuery("button").click(function(){
+    jQuery("p").text("jQuery 仍然在工作!");
+  });
+});
+var jq = $.noConflict();
+jq(document).ready(function(){
+  jq("button").click(function(){
+    jq("p").text("jQuery 仍然在工作!");
+  });
+});
+$.noConflict();
+jQuery(document).ready(function($){
+  $("button").click(function(){
+    $("p").text("jQuery 仍然在工作!");
+  });
+});
+jQuery 树型菜单插件(Treeview)
+jQuery Tooltip
+
