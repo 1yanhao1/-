@@ -1,0 +1,19 @@
+菜鸟教程 JavaScript（复习）
+JavaScript 是一种轻量级的编程语言。JavaScript 是可插入 HTML 页面的编程代码。JavaScript 插入 HTML 页面后，可由所有的现代浏览器执行
+HTML 中的脚本必须位于 <script> 与 </script> 标签之间。脚本可被放置在 HTML 页面的 <body> 和 <head> 部分中
+JavaScript 可以通过不同的方式来输出数据：使用 window.alert() 弹出警告框。使用 document.write() 方法将内容写到 HTML 文档中。重写整个页面
+使用 innerHTML 写入到 HTML 元素。使用 console.log() 写入到浏览器的控制台，浏览器调试模式
+如需从 JavaScript 访问某个 HTML 元素，您可以使用 document.getElementById(id) 方法
+在编程语言中，一般固定值称为字面量。JavaScript 关键字用于标识要执行的操作。JavaScript 使用 Unicode 字符集。JavaScript 对大小写是敏感的。
+双斜杠 // 后的内容将会被浏览器忽略，在行末使用注释
+分号用于分隔 JavaScript 语句。通常我们在每条可执行的语句结尾添加分号。使用分号的另一用处是在一行中编写多条语句。
+浏览器按照编写顺序依次执行每条语句。
+JavaScript 可以分批地组合起来。代码块以左花括号开始，以右花括号结束。代码块的作用是一并地执行语句序列。
+JavaScript 语句标识符，您可以在文本字符串中使用反斜杠对代码行进行换行，
+多行注释以 /* 开始，以 */ 结尾。
+变量可以使用短名称（比如 x 和 y），也可以使用描述性更好的名称（比如 age, sum, totalvolume）。变量必须以字母开头
+变量也能以 $ 和 _ 符号开头（不过我们不推荐这么做）变量名称对大小写敏感（y 和 Y 是不同的变量）
+可以在一条语句中声明很多变量。该语句以 var 开头，并使用逗号分隔变量即可使用 var 关键词来声明变量
+未使用值来声明的变量，其值实际上是 undefined。重新声明 JavaScript 变量，该变量的值不会丢失
+JavaScript 数据类型
+字符串（String）、数字(Number)、布尔(Boolean)、数组(Array)、对象(Object)、空（Null）、未定义（Undefined）
