@@ -15,5 +15,207 @@ JavaScript 语句标识符，您可以在文本字符串中使用反斜杠对代
 变量也能以 $ 和 _ 符号开头（不过我们不推荐这么做）变量名称对大小写敏感（y 和 Y 是不同的变量）
 可以在一条语句中声明很多变量。该语句以 var 开头，并使用逗号分隔变量即可使用 var 关键词来声明变量
 未使用值来声明的变量，其值实际上是 undefined。重新声明 JavaScript 变量，该变量的值不会丢失
-JavaScript 数据类型
-字符串（String）、数字(Number)、布尔(Boolean)、数组(Array)、对象(Object)、空（Null）、未定义（Undefined）
+JavaScript 数据类型：字符串（String）、数字(Number)、布尔(Boolean)、数组(Array)、对象(Object)、空（Null）、未定义（Undefined）
+声明新变量时，可以使用关键词 "new" 来声明其类型
+JavaScript 对象是拥有属性和方法的数据，方法加括号输出函数执行结果
+在 JavaScript 函数内部声明的变量（使用 var）是局部变量，所以只能在函数内部访问它。（该变量的作用域是局部的）。
+您可以在不同的函数中使用名称相同的局部变量，因为只有声明过该变量的函数才能识别出该变量。只要函数运行完毕，本地变量就会被删除。
+在函数外声明的变量是全局变量，网页上的所有脚本和函数都能访问它
+JavaScript 变量的生命期从它们被声明的时间开始。局部变量会在函数运行以后被删除。全局变量会在页面关闭后被删除。
+在 HTML 中, 全局变量是 window 对象: 所有数据变量都属于 window 对象。
+HTML 事件是发生在 HTML 元素上的事情。当在 HTML 页面中使用 JavaScript 时， JavaScript 可以触发这些事件。
+可以在字符串添加转义字符来使用引号
+使用 new 关键字将字符串定义为一个对象： var firstName = new String("John")不要创建 String 对象。它会拖慢执行速度，并可能产生其他副作用
+=== 为绝对相等，即数据类型与值都必须相等
+字符串属性和方法
+variablename=(condition)?value1:value2 
+使用 default 关键词来规定匹配不存在时做的事情
+JavaScript for/in 语句循环遍历对象的属性
+while 循环会在指定条件为真时循环执行代码块
+do/while 循环是 while 循环的变体。该循环会在检查条件是否为真之前执行一次代码块，然后如果条件为真的话，就会重复这个循环。
+通过标签引用，break 语句可用于跳出任何 JavaScript 代码块：break labelname; 
+可以使用 typeof 操作符来检测变量的数据类型。在JavaScript中，数组是一种特殊的对象类型。 因此 typeof [1,2,3,4] 返回 object
+用 typeof 检测 null 返回是object。null 和 undefined 的值相等，但类型不等
+NaN 的数据类型是 number 日期(Date)的数据类型为 object
+constructor 属性返回所有 JavaScript 变量的构造函数。
+Operator + 可用于将变量转换为数字
+可以使用 constructor 属性来查看对象是否为数组 (包含字符串 "Array"):
+function isArray(myArray) {
+    return myArray.constructor.toString().indexOf("Array") > -1;
+}
+全局方法 Number() 可以将字符串转换为数字。字符串包含数字(如 "3.14") 转换为数字 (如 3.14).
+空字符串转换为 0。其他的字符串会转换为 NaN (不是个数字)。
+正则表达式（英语：Regular Expression，在代码中常简写为regex、regexp或RE）使用单个字符串来描述、匹配一系列符合某个句法规则的字符串搜索模式。
+搜索模式可用于文本搜索和文本替换。
+/正则表达式主体/修饰符(可选)
+在 JavaScript 中，正则表达式通常用于两个字符串方法 : search() 和 replace()。
+search() 方法 用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串，并返回子串的起始位置。
+replace() 方法 用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。
+在 JavaScript 中，RegExp 对象是一个预定义了属性和方法的正则表达式对象
+test() 方法用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回 true，否则返回 false。
+exec() 方法是一个正则表达式方法。exec() 方法用于检索字符串中的正则表达式的匹配。
+该函数返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null。
+try 语句测试代码块的错误。catch 语句处理错误。throw 语句创建自定义错误。
+在调试窗口中，你可以设置 JavaScript 代码的断点。在每个断点上，都会停止执行 JavaScript 代码，以便于我们检查 JavaScript 变量的值
+JavaScript 变量提升,JavaScript 中，变量可以在使用后声明，也就是变量可以先使用再声明.JavaScript 只有声明的变量会提升，初始化的不会。
+严格模式下你不能使用未声明的变量,"use strict" 指令只允许出现在脚本或函数的开头
+对象只有被定义才有可能为 null，否则为 undefined  if (typeof myObj !== "undefined" && myObj !== null) 
+定义对象，最后不能添加逗号
+定义数组元素，最后不能添加逗号
+在 JavaScript 中, 对象 使用 名字作为索引。如果你使用名字作为索引，当访问数组时，JavaScript 会把数组重新定义为标准对象。执行这样操作后，数组的方法及属性将不能再使用
+不用对 return 语句进行断行，由于 return 是一个完整的语句，所以 JavaScript 将关闭 return 语句。
+字符串断行需要使用反斜杠(\)
+var x = "Hello \
+World!";
+JavaScript 中的所有数据都是以 64 位浮点型数据(float) 来存储。所有的编程语言，包括 JavaScript，对浮点型数据的精确度都很难确定：可以用整数的乘除法来解决
+switch 语句会使用恒等计算符(===)进行比较
+服务端数据验证是在数据提交到服务器上后再验证。客户端数据验证 side validation是在数据发送到服务器前，在浏览器上完成验证。
+必填（或必选）项目
+function validateForm()
+{
+  var x=document.forms["myForm"]["fname"].value;
+  if (x==null || x=="")
+  {
+    alert("姓必须填写");
+    return false;
+  }
+}
+<form name="myForm" action="demo-form.php" onsubmit="return validateForm()" method="post">
+姓: <input type="text" name="fname">
+<input type="submit" value="提交">
+</form>
+E-mail 验证
+function validateForm(){
+  var x=document.forms["myForm"]["email"].value;
+  var atpos=x.indexOf("@");
+  var dotpos=x.lastIndexOf(".");
+  if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length){
+    alert("不是一个有效的 e-mail 地址");
+    return false;
+  }
+}
+<form name="myForm" action="demo-form.php" onsubmit="return validateForm();" method="post">
+    Email: <input type="text" name="email">
+    <input type="submit" value="提交">
+</form>
+JavaScript 验证 API
+<input id="id1" type="number" min="100" max="300" required>
+<button onclick="myFunction()">验证</button>
+ 
+<p id="demo"></p>
+ 
+<script>
+function myFunction() {
+    var inpObj = document.getElementById("id1");
+    if (inpObj.checkValidity() == false) {
+        document.getElementById("demo").innerHTML = inpObj.validationMessage;
+    }
+}
+</script>
+<input id="id1" type="number" min="100" required>
+<button onclick="myFunction()">OK</button>
+ 
+<p id="demo"></p>
+ 
+<script>
+function myFunction() {
+    var txt = "";
+    var inpObj = document.getElementById("id1");
+    if(!isNumeric(inpObj.value)) {
+        txt = "你输入的不是数字";
+    } else if (inpObj.validity.rangeUnderflow) {
+        txt = "输入的值太小了";
+    } else {
+        txt = "输入正确";
+    }
+    document.getElementById("demo").innerHTML = txt;
+}
+ 
+// 判断输入是否为数字
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+</script>
+JSON 是用于存储和传输数据的格式。JSON 通常用于服务端向网页传递数据 。JSON 使用 JavaScript 语法，但是 JSON 格式仅仅是一个文本。文本可以被任何编程语言读取及作为数据格式传递。
+使用 JavaScript 内置函数 JSON.parse() 将字符串转换为 JavaScript 对象
+javascript:void(0) 中最关键的是 void 关键字， void 是 JavaScript 中非常重要的关键字，该操作符指定要计算一个表达式但是不返回值。
+但是括号内的表达式还是要运行
+JavaScript 中通常推荐使用驼峰法，jQuery 及其他 JavaScript 库都使用驼峰法
+通常使用 4 个空格符号来缩进代码块：
+var values = ["Volvo", "Saab", "Fiat"];
+
+var person = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 50,
+    eyeColor: "blue"
+};
+if (time < 20) {
+    greeting = "Good day";
+} else {
+    greeting = "Good evening";
+}
+函数声明
+function functionName(parameters) {
+  执行的代码
+}
+函数表达式
+var x = function (a, b) {return a * b};
+Function() 构造函数
+var myFunction = new Function("a", "b", "return a * b");
+自调用函数
+(function () {
+    var x = "Hello!!";      // 我将调用自己
+})();
+JavaScript 函数有 属性 和 方法。
+arguments.length 属性返回函数调用过程接收到的参数个数
+toString() 方法将函数作为一个字符串返回
+函数定义作为对象的属性，称之为对象方法。函数如果用于创建新的对象，称之为对象的构造函数
+JavaScript 函数定义时显式参数没有指定数据类型。JavaScript 函数对隐式参数没有进行类型检测。JavaScript 函数对隐式参数的个数没有进行检测
+如果函数在调用时未提供隐式参数，参数会默认设置为： undefined
+JavaScript 函数有个内置的对象 arguments 对象。argument 对象包含了函数调用的参数数组。
+通过值传递参数，如果函数修改参数的值，不会修改显式参数的初始值（在函数外定义）。隐式参数的改变在函数外是不可见的
+通过对象传递参数因此我们在函数内部修改对象的属性就会修改其初始的值。修改对象属性可作用于函数外部（全局变量）。修改对象属性在函数外是可见的。
+一般而言，在Javascript中，this指向函数执行时的当前对象
+call() 和 apply() 是预定义的函数方法。 两个方法可用于调用函数，两个方法的第一个参数必须是对象本身。
+两者的区别在于第二个参数： apply传入的是一个参数数组，也就是将多个参数组合成为一个数组传入，而call则作为call的参数传入（从第二个参数开始）
+在 JavaScript 中，所有函数都能访问它们上一层的作用域。JavaScript 支持嵌套函数。嵌套函数可以访问上一层的函数变量。
+var add = (function () {
+    var counter = 0;
+    return function () {return counter += 1;}
+})();
+ 
+add();
+add();
+add();
+浏览器会创建页面的文档对象模型（Document Object Model）。HTML DOM 模型被构造为对象的树
+通过 id 找到 HTML 元素，通过标签名找到 HTML 元素，通过类名找到 HTML 元素
+document.getElementById(id).style.property=新样式
+document.getElementById(id).attribute=新属性值
+创建新的 HTML 元素
+<div id="div1">
+<p id="p1">这是一个段落。</p>
+<p id="p2">这是另一个段落。</p>
+</div>
+
+<script>
+var para=document.createElement("p");
+var node=document.createTextNode("这是一个新段落。");
+para.appendChild(node);
+
+var element=document.getElementById("div1");
+element.appendChild(para);
+</script>
+删除已有的 HTML 元素
+var child=document.getElementById("p1");
+child.parentNode.removeChild(child);
+addEventListener() 方法用于向指定元素添加事件句柄。addEventListener() 方法添加的事件句柄不会覆盖已存在的事件句柄。
+你可以向一个元素添加多个事件句柄。你可以向同个元素添加多个同类型的事件句柄，如：两个 "click" 事件。
+你可以向任何 DOM 对象添加事件监听，不仅仅是 HTML 元素。如： window 对象。addEventListener() 方法可以更简单的控制事件（冒泡与捕获）。
+当你使用 addEventListener() 方法时, JavaScript 从 HTML 标记中分离开来，可读性更强， 在没有控制HTML标记时也可以添加事件监听。
+你可以使用 removeEventListener() 方法来移除事件的监听。
+element.addEventListener(event, function, useCapture);
+事件传递有两种方式：冒泡与捕获。
+事件传递定义了元素事件触发的顺序。 如果你将 <p> 元素插入到 <div> 元素中，用户点击 <p> 元素, 哪个元素的 "click" 事件先被触发呢？
+在 冒泡 中，内部元素的事件会先被触发，然后再触发外部元素，即： <p> 元素的点击事件先触发，然后会触发 <div> 元素的点击事件。
+在 捕获 中，外部元素的事件会先被触发，然后才会触发内部元素的事件，即： <div> 元素的点击事件先触发 ，然后再触发 <p> 元素的点击事件。
