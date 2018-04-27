@@ -1,0 +1,391 @@
+菜鸟教程 bootstrap(复习）
+Bootstrap 包的内容
+基本结构：Bootstrap 提供了一个带有网格系统、链接样式、背景的基本结构。
+CSS：Bootstrap 自带以下特性：全局的 CSS 设置、定义基本的 HTML 元素样式、可扩展的 class，以及一个先进的网格系统。
+组件：Bootstrap 包含了十几个可重用的组件，用于创建图像、下拉菜单、导航、警告框、弹出框等等。
+JavaScript 插件：Bootstrap 包含了十几个自定义的 jQuery 插件。您可以直接包含所有的插件，也可以逐个包含这些插件。
+可以定制 Bootstrap 的组件、LESS 变量和 jQuery 插件来得到您自己的版本。
+Download Bootstrap：下载 Bootstrap。可以下载 Bootstrap CSS、JavaScript 和字体的预编译的压缩版本。不包含文档和最初的源代码文件。
+Download Source：下载源代码得到最新的 Bootstrap LESS 和 JavaScript 源代码。
+如果使用的是未编译的源代码，需要编译 LESS 文件来生成可重用的 CSS 文件。对于编译 LESS 文件，Bootstrap 官方只支持 Recess，
+基本的 HTML 模板
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Bootstrap 模板</title>
+      <!--width 属性控制设备的宽度设置为 device-width 可以确保它能正确呈现在不同设备上。initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- 引入 Bootstrap -->
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+ 
+      <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <body>
+      <h1>Hello, world!</h1>
+ 
+      <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+      <script src="https://code.jquery.com/jquery.js"></script>
+      <!-- 包括所有已编译的插件 -->
+      <script src="js/bootstrap.min.js"></script>
+   </body>
+</html>
+移动设备优先是 Bootstrap 3 的最显著的变化
+通过添加 img-responsive class 可以让 Bootstrap 3 中的图像对响应式布局的支持更友好。
+.img-responsive {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+全局显示、排版和链接
+Normalize.css 是一个很小的 CSS 文件，在 HTML 元素的默认样式中提供了更好的跨浏览器一致性
+Bootstrap 3 的 container class 用于包裹页面上的内容。
+.container {
+   padding-right: 15px;
+   padding-left: 15px;
+   margin-right: auto;
+   margin-left: auto;
+}
+把 container 的左右外边距（margin-right、margin-left）交由浏览器决定。由于内边距（padding）是固定宽度，默认情况下容器是不可嵌套的。
+Bootstrap 3 CSS 有一个申请响应的媒体查询，在不同的媒体查询阈值范围内都为 container 设置了max-width，用以匹配网格系统。
+@media (min-width: 768px) {
+   .container {
+      width: 750px;
+}
+Bootstrap 提供了一套响应式、移动设备优先的流式网格系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多12列。
+网页设计中的网格用于组织内容，让网站易于浏览，并降低用户端的负载。
+网格系统通过一系列包含内容的行和列来创建页面布局。下面列出了 Bootstrap 网格系统是如何工作的：
+行必须放置在 .container class 内，以便获得适当的对齐（alignment）和内边距（padding）。
+使用行来创建列的水平组。
+内容应该放置在列内，且唯有列可以是行的直接子元素。
+预定义的网格类，比如 .row 和 .col-xs-4，可用于快速创建网格布局。LESS 混合类可用于更多语义布局。
+列通过内边距（padding）来创建列内容之间的间隙。该内边距是通过 .rows 上的外边距（margin）取负，表示第一列和最后一列的行偏移。
+网格系统是通过指定您想要横跨的十二个可用的列来创建的。例如，要创建三个相等的列，则使用三个 .col-xs-4。
+<div class="container">
+   <div class="row">
+      <div class="col-*-*"></div>
+      <div class="col-*-*"></div>      
+   </div>
+   <div class="row">...</div>
+</div>
+<div class="container">....
+媒体查询是非常别致的"有条件的 CSS 规则"。它只适用于一些基于某些规定条件的 CSS。如果满足那些条件，则应用相应的样式。
+@media (max-width: @screen-xs-max) { ... }
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
+@media (min-width: @screen-lg-min) { ... }
+媒体查询有两个部分，先是一个设备规范，然后是一个大小规则。
+	超小设备手机（<768px）	小型设备平板电脑（≥768px）	中型设备台式电脑（≥992px）	大型设备台式电脑（≥1200px）
+网格行为	一直是水平的	以折叠开始，断点以上是水平的	以折叠开始，断点以上是水平的	以折叠开始，断点以上是水平的
+最大容器宽度	None (auto)	750px	970px	1170px
+Class 前缀	.col-xs-	.col-sm-	.col-md-	.col-lg-
+列数量和	12	12	12	12
+最大列宽	Auto	60px	78px	95px
+间隙宽度	30px
+偏移列为了在大屏幕显示器上使用偏移，请使用 .col-md-offset-* 类。这些类会把一个列的左外边距（margin）增加 * 列，其中 * 范围是从 1 到 11。
+嵌套列
+您可以很轻易地改变带有 .col-md-push-* 和 .col-md-pull-* 类的内置网格列的顺序，其中 * 范围是从 1 到 11。
+Bootstrap 中定义了所有的 HTML 标题（h1 到 h6）的样式
+如果需要向任何标题添加一个内联子标题，只需要简单地在元素两旁添加 <small>，或者添加 .small class，这样子您就能得到一个字号更小的颜色更浅的文本，
+为了给段落添加强调文本，则可以添加 class="lead"，这将得到更大更粗、行高更高的文本，
+<small>本行内容是在标签内</small><br>
+<strong>本行内容是在标签内</strong><br>
+<em>本行内容是在标签内，并呈现为斜体</em><br>
+<p class="text-left">向左对齐文本</p>
+<p class="text-center">居中对齐文本</p>
+<p class="text-right">向右对齐文本</p>
+<p class="text-muted">本行内容是减弱的</p>
+<p class="text-primary">本行内容带有一个 primary class</p>
+<p class="text-success">本行内容带有一个 success class</p>
+<p class="text-info">本行内容带有一个 info class</p>
+<p class="text-warning">本行内容带有一个 warning class</p>
+<p class="text-danger">本行内容带有一个 danger class</p>
+<h4>水平的定义列表</h4>
+<dl class="dl-horizontal">
+  <dt>Description 1</dt>
+  <dd>Item 1</dd>
+  <dt>Description 2</dt>
+  <dd>Item 2</dd>
+</dl>
+.pre-scrollable	使 <pre> 元素可滚动，代码块区域最大高度为340px,一旦超出这个高度,就会在Y轴出现滚动条
+<h4>内联列表</h4>
+<ul class="list-inline">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+  <li>Item 4</li>
+</ul>
+Bootstrap 允许您以两种方式显示代码：
+第一种是 <code> 标签。如果您想要内联显示代码，那么您应该使用 <code> 标签。
+第二种是 <pre> 标签。如果代码需要被显示为一个独立的块元素或者代码有多行，那么您应该使用 <pre> 标签。
+请确保当您使用 <pre> 和 <code> 标签时，开始和结束标签使用了 unicode 变体： &lt; 和 &gt;。
+.table	为任意 <table> 添加基本样式 (只有横向分隔线)
+.table-striped	在 <tbody> 内添加斑马线形式的条纹 ( IE8 不支持)	
+.table-bordered	为所有表格的单元格添加边框	
+.table-hover	在 <tbody> 内的任一行启用鼠标悬停状态	
+.table-condensed	让表格更加紧凑
+允许您改变表格行或单个单元格的背景颜色。
+.active	将悬停的颜色应用在行或者单元格上	
+.success	表示成功的操作	
+.info	表示信息变化的操作	
+.warning	表示一个警告的操作	
+.danger	表示一个危险的操作
+通过把任意的 .table 包在 .table-responsive class 内，您可以让表格水平滚动以适应小型设备（小于 768px）
+下面列出了创建基本表单的步骤：
+向父 <form> 元素添加 role="form"。
+把标签和控件放在一个带有 class .form-group 的 <div> 中。这是获取最佳间距所必需的。
+向所有的文本元素 <input>、<textarea> 和 <select> 添加 class ="form-control" 。
+<form role="form">
+  <div class="form-group">
+    <label for="name">名称</label>
+    <input type="text" class="form-control" id="name" placeholder="请输入名称">
+  </div>
+  <div class="form-group">
+    <label for="inputfile">文件输入</label>
+    <input type="file" id="inputfile">
+    <p class="help-block">这里是块级帮助文本的实例。</p>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox">请打勾
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default">提交</button>
+</form>
+如果需要创建一个表单，它的所有元素是内联的，向左对齐的，标签是并排的，请向 <form> 标签添加 class .form-inline。
+<form class="form-inline" role="form">
+  <div class="form-group">
+    <label class="sr-only" for="name">名称</label>
+    <input type="text" class="form-control" id="name" placeholder="请输入名称">
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="inputfile">文件输入</label>
+    <input type="file" id="inputfile">
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox">请打勾
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default">提交</button>
+</form>
+
+水平表单与其他表单不仅标记的数量上不同，而且表单的呈现形式也不同。如需创建一个水平布局的表单，请按下面的几个步骤进行：
+向父 <form> 元素添加 class .form-horizontal。
+把标签和控件放在一个带有 class .form-group 的 <div> 中。
+向标签添加 class .control-label。
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label for="firstname" class="col-sm-2 control-label">名字</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="firstname" placeholder="请输入名字">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="lastname" class="col-sm-2 control-label">姓</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="lastname" placeholder="请输入姓">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox">请记住我
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">登录</button>
+    </div>
+  </div>
+</form>
+当您需要进行多行输入的时，则可以使用文本框 textarea。必要时可以改变 rows 属性（较少的行 = 较小的盒子，较多的行 = 较大的盒子）。
+复选框（Checkbox）和单选框（Radio）
+<label for="name">默认的复选框和单选按钮的实例</label>
+<div class="checkbox">
+    <label><input type="checkbox" value="">选项 1</label>
+</div>
+<div class="checkbox">
+    <label><input type="checkbox" value="">选项 2</label>
+</div>
+<div class="radio">
+    <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 选项 1
+    </label>
+</div>
+<div class="radio">
+    <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">选项 2 - 选择它将会取消选择选项 1
+    </label>
+</div>
+<label for="name">内联的复选框和单选按钮的实例</label>
+<div>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox1" value="option1"> 选项 1
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox2" value="option2"> 选项 2
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox3" value="option3"> 选项 3
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="option1" checked> 选项 1
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="optionsRadiosinline" id="optionsRadios4"  value="option2"> 选项 2
+    </label>
+</div>
+选择框（Select）
+<form role="form">
+  <div class="form-group">
+    <label for="name">选择列表</label>
+    <select class="form-control">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+    <label for="name">可多选的选择列表</label>
+    <select multiple class="form-control">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+</form>
+当您需要在一个水平表单内的表单标签后放置纯文本时，请在 <p> 上使用 class .form-control-static
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">email@example.com</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword" class="col-sm-2 control-label">密码</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword" placeholder="请输入密码">
+    </div>
+  </div>
+</form>
+表单控件状态
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">聚焦</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="focusedInput" type="text" value="该输入框获得焦点...">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword" class="col-sm-2 control-label">禁用</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="disabledInput" type="text" placeholder="该输入框禁止输入..." disabled>
+    </div>
+  </div>
+  <fieldset disabled>
+    <div class="form-group">
+      <label for="disabledTextInput" class="col-sm-2 control-label">禁用输入（Fieldset disabled）</label>
+      <div class="col-sm-10">
+        <input type="text" id="disabledTextInput" class="form-control" placeholder="禁止输入">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="disabledSelect" class="col-sm-2 control-label">禁用选择菜单（Fieldset disabled）</label>
+      <div class="col-sm-10">
+        <select id="disabledSelect" class="form-control">
+          <option>禁止选择</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-group has-success">
+    <label class="col-sm-2 control-label" for="inputSuccess">输入成功</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputSuccess">
+    </div>
+  </div>
+  <div class="form-group has-warning">
+    <label class="col-sm-2 control-label" for="inputWarning">输入警告</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputWarning">
+    </div>
+  </div>
+  <div class="form-group has-error">
+    <label class="col-sm-2 control-label" for="inputError">输入错误</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputError">
+    </div>
+  </div>
+</form>
+表单控件大小
+<form role="form">
+  <div class="form-group">
+    <input class="form-control input-lg" type="text" placeholder=".input-lg">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" placeholder="默认输入">
+  </div>
+  <div class="form-group">
+    <input class="form-control input-sm" type="text" placeholder=".input-sm">
+  </div>
+  <div class="form-group"></div>
+  <div class="form-group">
+    <select class="form-control input-lg">
+      <option value="">.input-lg</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <select class="form-control">
+      <option value="">默认选择</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <select class="form-control input-sm">
+      <option value="">.input-sm</option>
+    </select>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+      <input type="text" class="form-control" placeholder=".col-lg-2">
+    </div>
+    <div class="col-lg-3">
+      <input type="text" class="form-control" placeholder=".col-lg-3">
+    </div>
+    <div class="col-lg-4">
+      <input type="text" class="form-control" placeholder=".col-lg-4">
+    </div>
+  </div>
+</form>
+Bootstrap 表单控件可以在输入框 input 上有一个块级帮助文本。为了添加一个占用整个宽度的内容块，请在 <input> 后使用 .help-block。
+<form role="form">
+  <span>帮助文本实例</span>
+  <input class="form-control" type="text" placeholder="">
+  <span class="help-block">一个较长的帮助文本块，超过一行，
+  需要扩展到下一行。本实例中的帮助文本总共有两行。</span>
+</form>
+任何带有 class .btn 的元素都会继承圆角灰色按钮的默认外观。但是 Bootstrap 提供了一些选项来定义按钮的样式，
+展示了不同的文本颜色
+展示了不同的背景颜色
+pull-left	元素浮动到左边	
+.pull-right	元素浮动到右边	
+.center-block	设置元素为 display:block 并居中显示
+.clearfix	清除浮动	
+.show	强制元素显示	
+.hidden	强制元素隐藏	
+.sr-only	除了屏幕阅读器外，其他设备上隐藏元素
+.sr-only-focusable	与 .sr-only 类结合使用，在元素获取焦点时显示(如：键盘操作的用户)	
+.text-hide	将页面元素所包含的文本内容替换为背景图	
+.close	显示关闭按钮	
+.caret	显示下拉式功能
+响应式实用工具目前只适用于块和表切换。通过媒体查询结合大型、小型和中型设备，实现内容对设备的显示和隐藏。
