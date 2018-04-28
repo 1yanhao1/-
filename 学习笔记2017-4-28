@@ -1,1 +1,416 @@
 菜鸟教程bootstrap(复习）
+字体图标是在 Web 项目中使用的图标字体。CSS 规则解释 <span class="glyphicon glyphicon-search"></span>
+通过改变字体尺寸、颜色和应用文本阴影来进行定制图标
+<button type="button" class="btn btn-primary btn-lg" style="font-size: 60px">
+  <span class="glyphicon glyphicon-user"></span> User
+</button>
+如需使用下拉菜单，只需要在 class .dropdown 内加上下拉菜单即可。下面的实例演示了基本的下拉菜单：
+<div class="dropdown">
+    <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">主题
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">Java</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">数据挖掘</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">数据通信/网络</a>
+        </li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">分离的链接</a>
+        </li>
+    </ul>
+</div>
+向 .dropdown-menu 添加 class .pull-right 来向右对齐下拉菜单。
+可以使用 class dropdown-header 向下拉菜单的标签区域添加标题。
+按钮组允许多个按钮被堆叠在同一行上。
+<div class="btn-group btn-group-lg">
+    <button type="button" class="btn btn-default">按钮 1</button>
+    <button type="button" class="btn btn-default">按钮 2</button>
+    <button type="button" class="btn btn-default">按钮 3</button>
+</div>
+    <div class="btn-group btn-group-sm">
+    <button type="button" class="btn btn-default">按钮 4</button>
+    <button type="button" class="btn btn-default">按钮 5</button>
+    <button type="button" class="btn btn-default">按钮 6</button>
+</div>
+    <div class="btn-group btn-group-xs">
+    <button type="button" class="btn btn-default">按钮 7</button>
+    <button type="button" class="btn btn-default">按钮 8</button>
+    <button type="button" class="btn btn-default">按钮 9</button>
+</div>
+可以在一个按钮组内嵌套另一个按钮组，
+<div class="btn-group">
+    <button type="button" class="btn btn-default">按钮 1</button>
+    <button type="button" class="btn btn-default">按钮 2</button>
+    <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        下拉
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li><a href="#">下拉链接 1</a></li>
+        <li><a href="#">下拉链接 2</a></li>
+    </ul>
+    </div>
+</div>
+垂直的按钮组 class .btn-group-vertical 
+下拉菜单，可以使用带有各种大小按钮的下拉菜单：.btn-large、.btn-sm 或 .btn-xs
+菜单也可以往上拉伸的，只需要简单地向父 .btn-group 容器添加 .dropup 即可。
+使用输入框组，可以很容易地向基于文本的输入框添加作为前缀和后缀的文本或按钮。
+<div style="padding: 100px 100px 10px;">
+    <form class="bs-example bs-example-form" role="form">
+        <div class="input-group">
+            <span class="input-group-addon">@</span>
+            <input type="text" class="form-control" placeholder="twitterhandle">
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control">
+            <span class="input-group-addon">.00</span>
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input type="text" class="form-control">
+            <span class="input-group-addon">.00</span>
+        </div>
+    </form>
+</div>
+可以通过向 .input-group 添加相对表单大小的 class（比如 .input-group-lg、input-group-sm）来改变输入框组的大小。输入框中的内容会自动调整大小。
+可以把按钮作为输入框组的前缀或者后缀元素，这个时候您就不是添加 .input-group-addon class，您需要使用 class .input-group-btn 来包裹按钮。这是必需的，
+因为默认的浏览器样式不会被重写。
+<div style="padding: 100px 100px 10px;">
+    <form class="bs-example bs-example-form" role="form">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                    <input type="text" class="form-control">
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+            <br>
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <input type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+    </form>
+</div>
+在输入框组中添加带有下拉菜单的按钮，只需要简单地在一个 .input-group-btn class 中包裹按钮和下拉菜单即可，
+表格导航或标签
+<p>基本的胶囊式导航菜单</p>
+<ul class="nav nav-pills">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">SVN</a></li>
+  <li><a href="#">iOS</a></li>
+  <li><a href="#">VB.Net</a></li>
+  <li><a href="#">Java</a></li>
+  <li><a href="#">PHP</a></li>
+</ul>
+可以在使用 class .nav、.nav-pills 的同时使用 class .nav-stacked，让胶囊垂直堆叠。
+可以在屏幕宽度大于 768px 时，通过在分别使用 .nav、.nav-tabs 或 .nav、.nav-pills 的同时使用 class .nav-justified，
+让标签式或胶囊式导航菜单与父元素等宽。在更小的屏幕上，导航链接会堆叠。
+对每个 .nav class，如果添加了 .disabled class，则会创建一个灰色的链接，同时禁用了该链接的 :hover 状态，
+导航栏是一个很好的功能，是 Bootstrap 网站的一个突出特点。导航栏在您的应用或网站中作为导航页头的响应式基础组件。导航栏在移动设备的视图中是折叠的，随着可用视口宽度的增加，导航栏也会水平展开。
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">菜鸟教程</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">iOS</a></li>
+            <li><a href="#">SVN</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Java
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">jmeter</a></li>
+                    <li><a href="#">EJB</a></li>
+                    <li><a href="#">Jasper Report</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">分离的链接</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">另一个分离的链接</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    </div>
+</nav>
+为了给导航栏添加响应式特性，您要折叠的内容必须包裹在带有 class .collapse、.navbar-collapse 的 <div> 中。折叠起来的导航栏实际上是一个带有 class .navbar-toggle 及两个 data- 元素的按钮。第一个是 data-toggle，用于告诉 JavaScript 需要对按钮做什么，第二个是 data-target，指示要切换到哪一个元素。三个带有 class .icon-bar 的 <span> 创建所谓的汉堡按钮。
+这些会切换为 .nav-collapse <div> 中的元素。
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid"> 
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#example-navbar-collapse">
+            <span class="sr-only">切换导航</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">菜鸟教程</a>
+    </div>
+    <div class="collapse navbar-collapse" id="example-navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">iOS</a></li>
+            <li><a href="#">SVN</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Java <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">jmeter</a></li>
+                    <li><a href="#">EJB</a></li>
+                    <li><a href="#">Jasper Report</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">分离的链接</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">另一个分离的链接</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    </div>
+</nav>
+导航栏中的表单不是使用 Bootstrap 表单 章节中所讲到的默认的 class，它是使用 .navbar-form class。这确保了表单适当的垂直对齐和在较窄的视口中折叠的行为。
+使用对齐方式选项（这将在组件对齐方式部分进行详细讲解）来决定导航栏中的内容放置在哪里。
+可以使用 class .navbar-btn 向不在 <form> 中的 <button> 元素添加按钮，按钮在导航栏上垂直居中。.navbar-btn 可被使用在 <a> 和 <input> 元素上。
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">菜鸟教程</a>
+    </div>
+    <div>
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">提交按钮</button>
+        </form>
+        <button type="button" class="btn btn-default navbar-btn">
+            导航栏按钮
+        </button>
+    </div>
+    </div>
+</nav>
+如果需要在导航中包含文本字符串，请使用 class .navbar-text。这通常与 <p> 标签一起使用，确保适当的前导和颜色。
+可以使用实用工具 class .navbar-left 或 .navbar-right 向左或向右对齐导航栏中的 导航链接、表单、按钮或文本 这些组件。
+这两个 class 都会在指定的方向上添加 CSS 浮动。
+Bootstrap 导航栏可以动态定位。默认情况下，它是块级元素，它是基于在 HTML 中放置的位置定位的。通过一些帮助器类，
+您可以把它放置在页面的顶部或者底部，或者您可以让它成为随着页面一起滚动的静态导航栏。如果您想要让导航栏固定在页面的顶部，
+请向 .navbar class 添加 class .navbar-fixed-top。
+如果您想要让导航栏固定在页面的底部，请向 .navbar class 添加 class .navbar-fixed-bottom。
+如需创建能随着页面一起滚动的导航栏，请添加 .navbar-static-top class。
+为了创建一个带有黑色背景白色文本的反色的导航栏，只需要简单地向 .navbar class 添加 .navbar-inverse class 即可，
+.pagination	添加该 class 来在页面上显示分页。
+.pager	添加该 class 来获得翻页链接。	
+<ul class="pager">
+  <li><a href="#">Previous</a></li>
+  <li><a href="#">Next</a></li>
+</ul>
+.previous, .next	使用 class .previous 把链接向左对齐，使用 .next 把链接向右对齐。
+标签可用于计数、提示或页面上其他的标记显示。使用 class .label 来显示标签，
+徽章（Badges）主要用于突出显示新的或未读的项。如需使用徽章，只需要把 <span class="badge"> 添加到链接、Bootstrap 导航等这些元素上即可。
+超大屏幕（Jumbotron）。顾名思义该组件可以增加标题的大小，并为登陆页面内容添加更多的外边距（margin）。使用超大屏幕（Jumbotron）的步骤如下：
+创建一个带有 class .jumbotron. 的容器 <div>。除了更大的 <h1>，字体粗细 font-weight 被减为 200。
+页面标题（Page Header）是个不错的功能，它会在网页标题四周添加适当的间距。当一个网页中有多个标题且每个标题之间需要添加一定的间距时，页面标题这个功能就显得特别有用。如需使用页面标题（Page Header），
+请把您的标题放置在带有 class .page-header 的 <div> 中：
+<div class="page-header">
+    <h1>页面标题实例
+        <small>子标题</small>
+    </h1>
+</div>
+<p>这是一个示例文本。这是一个示例文本。这是一个示例文本。这是一个示例文本。这是一个示例文本。</p>
+使用 Bootstrap 创建缩略图的步骤如下：在图像周围添加带有 class .thumbnail 的 <a> 标签。
+这会添加四个像素的内边距（padding）和一个灰色的边框。当鼠标悬停在图像上时，会动画显示出图像的轮廓。
+以向缩略图添加各种 HTML 内容，比如标题、段落或按钮。
+    <div class="col-sm-6 col-md-3">
+         <div class="thumbnail">
+            <img src="/wp-content/uploads/2014/06/kittens.jpg" 
+             alt="通用的占位符缩略图">
+            <div class="caption">
+                <h3>缩略图标签</h3>
+                <p>一些示例文本。一些示例文本。</p>
+                <p>
+                    <a href="#" class="btn btn-primary" role="button">
+                        按钮
+                    </a> 
+                    <a href="#" class="btn btn-default" role="button">
+                        按钮
+                    </a>
+                </p>
+            </div>
+         </div>
+    </div>
+可取消的警告（Dismissal Alerts）
+创建一个可取消的警告（Dismissal Alert）步骤如下：
+通过创建一个 <div>，并向其添加一个 .alert class 和四个上下文 class（即 .alert-success、.alert-info、.alert-warning、.alert-danger）之一，来添加一个基本的警告框。
+同时向上面的 <div> class 添加可选的 .alert-dismissable。
+添加一个关闭按钮
+<div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+            成功！很好地完成了提交。
+        </div>
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+            信息！请注意这个信息。
+        </div>
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+            警告！请不要提交。
+        </div>
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+            </button>
+            错误！请进行一些更改。
+        </div>    
+  条纹的进度条
+  <div class="progress progress-striped">
+    <div class="progress-bar progress-bar-success" role="progressbar"
+         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+         style="width: 90%;">
+        <span class="sr-only">90% 完成（成功）</span>
+    </div>
+</div>
+动画的进度条
+<div class="progress progress-striped active">
+    <div class="progress-bar progress-bar-success" role="progressbar"
+         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+         style="width: 40%;">
+        <span class="sr-only">40% 完成</span>
+    </div>
+</div>
+堆叠多个进度条。把多个进度条放在相同的 .progress 中即可实现堆叠，
+.media-list：如果你需要一个列表，各项内容是无序列表的一部分，可以使用该 class。可用于评论列表与文章列表。
+<ul class="media-list">
+    <li class="media">
+        <a class="media-left" href="#">
+            <img class="media-object" src="/wp-content/uploads/2014/06/64.jpg"
+                 alt="通用的占位符图像">
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">媒体标题</h4>
+            <p>这是一些示例文本。这是一些示例文本。
+                这是一些示例文本。这是一些示例文本。
+                这是一些示例文本。这是一些示例文本。
+                这是一些示例文本。这是一些示例文本。
+                这是一些示例文本。这是一些示例文本。</p>
+            <!-- 嵌套的媒体对象 -->
+            <div class="media">
+                <a class="media-left" href="#">
+                    <img class="media-object" src="/wp-content/uploads/2014/06/64.jpg"
+                         alt="通用的占位符图像">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">嵌套的媒体标题</h4>
+                    这是一些示例文本。这是一些示例文本。
+                    这是一些示例文本。这是一些示例文本。
+                    这是一些示例文本。这是一些示例文本。
+                    这是一些示例文本。这是一些示例文本。
+                    这是一些示例文本。这是一些示例文本。
+                    <!-- 嵌套的媒体对象 -->
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img class="media-object" src="/wp-content/uploads/2014/06/64.jpg"
+                                 alt="通用的占位符图像">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">嵌套的媒体标题</h4>
+                            这是一些示例文本。这是一些示例文本。
+                            这是一些示例文本。这是一些示例文本。
+                            这是一些示例文本。这是一些示例文本。
+                            这是一些示例文本。这是一些示例文本。
+                            这是一些示例文本。这是一些示例文本。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 嵌套的媒体对象 -->
+            <div class="media">
+                <a class="media-left" href="#">
+                    <img class="media-object" src="/wp-content/uploads/2014/06/64.jpg"
+                         alt="通用的占位符图像">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">嵌套的媒体标题</h4>
+                    这是一些示例文本。这是一些示例文本。
+                    这是一些示例文本。这是一些示例文本。
+                    这是一些示例文本。这是一些示例文本。
+                    这是一些示例文本。这是一些示例文本。
+                    这是一些示例文本。这是一些示例文本。
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="media">
+        <a class="media-right" href="#">
+            <img class="media-object" src="/wp-content/uploads/2014/06/64.jpg"
+                 alt="通用的占位符图像">
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">媒体标题</h4>
+            这是一些示例文本。这是一些示例文本。
+            这是一些示例文本。这是一些示例文本。
+            这是一些示例文本。这是一些示例文本。
+            这是一些示例文本。这是一些示例文本。
+            这是一些示例文本。这是一些示例文本。
+        </div>
+    </li>
+</ul>
+列表组
+<div class="list-group">
+    <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">
+            入门网站包
+        </h4>
+    </a>
+    <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">
+            免费域名注册
+        </h4>
+        <p class="list-group-item-text">
+            您将通过网页进行免费域名注册。
+        </p>
+    </a>
+    <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">
+            24*7 支持
+        </h4>
+        <p class="list-group-item-text">
+            我们提供 24*7 支持。
+        </p>
+    </a>
+</div>
+建一使用 .panel-heading class 可以很简单地向面板添加标题容器。
+使用带有 .panel-title class 的 <h1>-<h6> 来添加预定义样式的标题。个基本的面板，只需要向 <div> 元素添加 class .panel 和 class .panel-default 即可，
+可以在面板中添加脚注，只需要把按钮或者副文本放在带有 class .panel-footer 的 <div> 中即可。
+使用语境状态类 panel-primary、panel-success、panel-info、panel-warning、panel-danger，来设置带语境色彩的面板
+可以在任何面板中包含列表组，通过在 <div> 元素中添加 .panel 和 .panel-default 类来创建面板，并在面板中添加列表组。
+为了在面板中创建一个无边框的表格，我们可以在面板中使用 class .table。假设有个 <div> 包含 .panel-body，
+我们可以向表格的顶部添加额外的边框用来分隔
