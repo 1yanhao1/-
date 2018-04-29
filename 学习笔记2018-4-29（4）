@@ -1,1 +1,576 @@
-菜鸟教程node.js Ajax json(复习）
+菜鸟教程node.js(复习）
+引入 required 模块：我们可以使用 require 指令来载入 Node.js 模块。
+创建服务器：服务器可以监听客户端的请求，类似于 Apache 、Nginx 等 HTTP 服务器。
+接收请求与响应请求 服务器很容易创建，客户端可以使用浏览器或终端发送 HTTP 请求，服务器接收请求后返回响应数据。
+步骤一、引入 required 模块
+我们使用 require 指令来载入 http 模块，并将实例化的 HTTP 赋值给变量 http，实例如下:
+var http = require("http");
+步骤二、创建服务器
+接下来我们使用 http.createServer() 方法创建服务器，并使用 listen 方法绑定 8888 端口。 函数通过 request, response 参数来接收和响应数据。
+实例如下，在你项目的根目录下创建一个叫 server.js 的文件，并写入以下代码：
+var http = require('http');
+
+http.createServer(function (request, response) {
+
+    // 发送 HTTP 头部 
+    // HTTP 状态值: 200 : OK
+    // 内容类型: text/plain
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+
+    // 发送响应数据 "Hello World"
+    response.end('Hello World\n');
+}).listen(8888);
+
+// 终端打印如下信息
+console.log('Server running at http://127.0.0.1:8888/');
+NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题，常见的使用场景有以下几种：
+允许用户从NPM服务器下载别人编写的第三方包到本地使用。
+允许用户从NPM服务器下载并安装别人编写的命令行程序到本地使用。
+允许用户将自己编写的包或命令行程序上传到NPM服务器供别人使用。
+使用 npm 命令安装常用的 Node.js web框架模块 express:
+$ npm install express
+安装好之后，express 包就放在了工程目录下的 node_modules 目录中，因此在代码中只需要通过 require('express') 的方式就好，无需指定第三方包路径。
+var express = require('express')
+package.json 位于模块的目录下，用于定义包的属性。接下来让我们来看下 express 包的 package.json 文件，位于 node_modules/express/package.json 内容：
+创建模块，package.json 文件是必不可少的。我们可以使用 NPM 生成 package.json 文件，生成的文件包含了基本的结果。
+$ npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg> --save` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+name: (node_modules) runoob                   # 模块名
+version: (1.0.0) 
+description: Node.js 测试模块(www.runoob.com)  # 描述
+entry point: (index.js) 
+test command: make test
+git repository: https://github.com/runoob/runoob.git  # Github 地址
+keywords: 
+author: 
+license: (ISC) 
+About to write to ……/node_modules/package.json:      # 生成地址
+
+{
+  "name": "runoob",
+  "version": "1.0.0",
+  "description": "Node.js 测试模块(www.runoob.com)",
+  ……
+}
+
+
+Is this ok? (yes) yes
+以上的信息，你需要根据你自己的情况输入。在最后输入 "yes" 后会生成 package.json 文件。
+接下来我们可以使用以下命令在 npm 资源库中注册用户（使用邮箱注册）：
+$ npm adduser
+Username: mcmohd
+Password:
+Email: (this IS public) mcmohd@gmail.com
+接下来我们就用以下命令来发布模块：
+$ npm publish
+如果你以上的步骤都操作正确，你就可以跟其他模块一样使用 npm 来安装。
+语义版本号分为X.Y.Z三位，分别代表主版本号、次版本号和补丁版本号。当代码变更时，版本号按以下原则更新。
+如果只是修复bug，需要更新Z位。
+如果是新增了功能，但是向下兼容，需要更新Y位。
+如果有大变动，向下不兼容，需要更新X位。
+版本号有了这个保证后，在申明第三方包依赖时，除了可依赖于一个固定版本号外，还可依赖于某个范围的版本号。例如"argv": "0.0.x"表示依赖于0.0.x系列的最新版argv。
+Node.js REPL(Read Eval Print Loop:交互式解释器) 表示一个电脑的环境，类似 Window 系统的终端或 Unix/Linux shell，我们可以在终端中输入命令，并接收系统的响应。
+Node 自带了交互式解释器，可以执行以下任务：
+读取 - 读取用户输入，解析输入了Javascript 数据结构并存储在内存中。
+执行 - 执行输入的数据结构
+打印 - 输出结果
+循环 - 循环操作以上步骤直到用户两次按下 ctrl-c 按钮退出。
+Node 的交互式解释器可以很好的调试 Javascript 代码。
+Node.js 异步编程的直接体现就是回调。
+异步编程依托于回调来实现，但不能说使用了回调后程序就异步化了。
+回调函数在完成任务后就会被调用，Node 使用了大量的回调函数，Node 所有 API 都支持回调函数。
+例如，我们可以一边读取文件，一边执行其他命令，在文件读取完成后，我们将文件内容作为回调函数的参数返回。
+这样在执行代码时就没有阻塞或等待文件 I/O 操作。这就大大提高了 Node.js 的性能，可以处理大量的并发请求。
+非阻塞代码实例
+创建一个文件 input.txt ，内容如下：
+菜鸟教程官网地址：www.runoob.com
+创建 main.js 文件, 代码如下：
+var fs = require("fs");
+
+fs.readFile('input.txt', function (err, data) {
+    if (err) return console.error(err);
+    console.log(data.toString());
+});
+
+console.log("程序执行结束!");
+Node.js 是单进程单线程应用程序，但是通过事件和回调支持并发，所以性能非常高。
+Node.js 的每一个 API 都是异步的，并作为一个独立线程运行，使用异步函数调用，并处理并发。
+Node.js 基本上所有的事件机制都是用设计模式中观察者模式实现。
+Node.js 单线程类似进入一个while(true)的事件循环，直到没有事件观察者退出，每个异步事件都生成一个事件观察者，如果有事件发生就调用该回调函数
+事件驱动程序
+创建 main.js 文件，代码如下所示：
+// 引入 events 模块
+var events = require('events');
+// 创建 eventEmitter 对象
+var eventEmitter = new events.EventEmitter();
+
+// 创建事件处理程序
+var connectHandler = function connected() {
+   console.log('连接成功。');
+  
+   // 触发 data_received 事件 
+   eventEmitter.emit('data_received');
+}
+
+// 绑定 connection 事件处理程序
+eventEmitter.on('connection', connectHandler);
+ 
+// 使用匿名函数绑定 data_received 事件
+eventEmitter.on('data_received', function(){
+   console.log('数据接收成功。');
+});
+
+// 触发 connection 事件 
+eventEmitter.emit('connection');
+
+console.log("程序执行完毕。");
+大多数时候我们不会直接使用 EventEmitter，而是在对象中继承它。包括 fs、net、 http 在内的，只要是支持事件响应的核心模块都是 EventEmitter 的子类。
+为什么要这样做呢？原因有两点：
+首先，具有某个实体功能的对象实现事件符合语义， 事件的监听和发生应该是一个对象的方法。
+其次 JavaScript 的对象机制是基于原型的，支持 部分多重继承，继承 EventEmitter 不会打乱对象原有的继承关系。
+JavaScript 语言自身只有字符串数据类型，没有二进制数据类型。
+但在处理像TCP流或文件流时，必须使用到二进制数据。因此在 Node.js中，定义了一个 Buffer 类，该类用来创建一个专门存放二进制数据的缓存区。
+在 Node.js 中，Buffer 类是随 Node 内核一起发布的核心库。Buffer 库为 Node.js 带来了一种存储原始数据的方法，可以让 Node.js 处理二进制数据，
+每当需要在 Node.js 中处理I/O操作中移动的数据时，就有可能使用 Buffer 库。
+原始数据存储在 Buffer 类的实例中。一个 Buffer 类似于一个整数数组，但它对应于 V8 堆内存之外的一块原始内存。
+buf = Buffer.alloc(26);
+for (var i = 0 ; i < 26 ; i++) {
+  buf[i] = i + 97;
+}
+
+console.log( buf.toString('ascii'));       // 输出: abcdefghijklmnopqrstuvwxyz
+console.log( buf.toString('ascii',0,5));   // 输出: abcde
+console.log( buf.toString('utf8',0,5));    // 输出: abcde
+console.log( buf.toString(undefined,0,5)); // 使用 'utf8' 编码, 并输出: abcde
+将 Node Buffer 转换为 JSON 对象的函数语法格式如下：
+buf.toJSON()
+当字符串化一个 Buffer 实例时，JSON.stringify() 会隐式地调用该 toJSON()
+Node 缓冲区合并的语法如下所示：
+Buffer.concat(list[, totalLength])
+Node Buffer 比较的函数语法如下所示, 该方法在 Node.js v0.12.2 版本引入：
+buf.compare(otherBuffer);
+Node 缓冲区拷贝语法如下所示：
+buf.copy(targetBuffer[, targetStart[, sourceStart[, sourceEnd]]])
+Node 缓冲区裁剪语法如下所示：
+buf.slice([start[, end]])
+Node 缓冲区长度计算语法如下所示：
+buf.length;
+从流中读取数据
+创建 input.txt 文件，内容如下：
+菜鸟教程官网地址：www.runoob.com
+创建 main.js 文件, 代码如下：
+var fs = require("fs");
+var data = '';
+
+// 创建可读流
+var readerStream = fs.createReadStream('input.txt');
+
+// 设置编码为 utf8。
+readerStream.setEncoding('UTF8');
+
+// 处理流事件 --> data, end, and error
+readerStream.on('data', function(chunk) {
+   data += chunk;
+});
+
+readerStream.on('end',function(){
+   console.log(data);
+});
+
+readerStream.on('error', function(err){
+   console.log(err.stack);
+});
+
+console.log("程序执行完毕");
+写入流
+创建 main.js 文件, 代码如下：
+var fs = require("fs");
+var data = '菜鸟教程官网地址：www.runoob.com';
+
+// 创建一个可以写入的流，写入到文件 output.txt 中
+var writerStream = fs.createWriteStream('output.txt');
+
+// 使用 utf8 编码写入数据
+writerStream.write(data,'UTF8');
+
+// 标记文件末尾
+writerStream.end();
+
+// 处理流事件 --> data, end, and error
+writerStream.on('finish', function() {
+    console.log("写入完成。");
+});
+
+writerStream.on('error', function(err){
+   console.log(err.stack);
+});
+
+console.log("程序执行完毕");
+var fs = require("fs");
+
+// 创建一个可读流
+var readerStream = fs.createReadStream('input.txt');
+
+// 创建一个可写流
+var writerStream = fs.createWriteStream('output.txt');
+
+// 管道读写操作
+// 读取 input.txt 文件内容，并将内容写入到 output.txt 文件中
+readerStream.pipe(writerStream);
+
+console.log("程序执行完毕");
+链式是通过连接输出流到另外一个流并创建多个流操作链的机制。链式流一般用于管道操作。
+接下来我们就是用管道和链式来压缩和解压文件。
+创建 compress.js 文件, 代码如下：
+var fs = require("fs");
+var zlib = require('zlib');
+
+// 压缩 input.txt 文件为 input.txt.gz
+fs.createReadStream('input.txt')
+  .pipe(zlib.createGzip())
+  .pipe(fs.createWriteStream('input.txt.gz'));
+  
+console.log("文件压缩完成。");
+模块是Node.js 应用程序的基本组成部分，文件和模块是一一对应的。换言之，一个 Node.js 文件就是一个模块，
+这个文件可能是JavaScript 代码、JSON 或者编译过的C/C++ 扩展。
+Node.js 提供了 exports 和 require 两个对象，其中 exports 是模块公开的接口，require 用于从外部获取一个模块的接口，即所获取模块的 exports 对象。
+//hello.js 
+function Hello() { 
+    var name; 
+    this.setName = function(thyName) { 
+        name = thyName; 
+    }; 
+    this.sayHello = function() { 
+        console.log('Hello ' + name); 
+    }; 
+}; 
+module.exports = Hello;
+这样就可以直接获得这个对象了：
+//main.js 
+var Hello = require('./hello'); 
+hello = new Hello(); 
+hello.setName('BYVoid'); 
+hello.sayHello(); 
+，从文件模块缓存中加载，从原生模块加载，从文件加载
+equire方法接受以下几种参数的传递：
+http、fs、path等，原生模块。
+./mod或../mod，相对路径的文件模块。
+/pathtomodule/mod，绝对路径的文件模块。
+mod，非原生模块的文件模块。
+在JavaScript中，一个函数可以作为另一个函数的参数。我们可以先定义一个函数，然后传递，也可以在传递参数的地方直接定义函数。
+var http = require("http");
+
+function onRequest(request, response) {
+  response.writeHead(200, {"Content-Type": "text/plain"});
+  response.write("Hello World");
+  response.end();
+}
+
+http.createServer(onRequest).listen(8888);
+要为路由提供请求的 URL 和其他需要的 GET 及 POST 参数，随后路由需要根据这些数据来执行相应的代码。
+因此，我们需要查看 HTTP 请求，从中提取出请求的 URL 以及 GET/POST 参数
+server.js 文件代码：
+var http = require("http");
+var url = require("url");
+ 
+function start(route) {
+  function onRequest(request, response) {
+    var pathname = url.parse(request.url).pathname;
+    console.log("Request for " + pathname + " received.");
+ 
+    route(pathname);
+ 
+    response.writeHead(200, {"Content-Type": "text/plain"});
+    response.write("Hello World");
+    response.end();
+  }
+ 
+  http.createServer(onRequest).listen(8888);
+  console.log("Server has started.");
+}
+ 
+exports.start = start;
+同时，我们会相应扩展 index.js，使得路由函数可以被注入到服务器中：
+index.js 文件代码：
+var server = require("./server");
+var router = require("./router");
+ 
+server.start(router.route);
+_filename 表示当前正在执行的脚本的文件名。它将输出文件所在位置的绝对路径，且和命令行参数所指定的文件名不一定相同。 如果在模块中，返回的值是模块文件的路径。
+__dirname 表示当前执行脚本所在的目录。
+setTimeout(cb, ms) 全局函数在指定的毫秒(ms)数后执行指定函数(cb)。：setTimeout() 只执行一次指定函数。
+返回一个代表定时器的句柄值。
+console 用于提供控制台标准输出，它是由 Internet Explorer 的 JScript 引擎提供的调试工具，后来逐渐成为浏览器的实施标准。
+process它用于描述当前Node.js 进程状态的对象，提供了一个与操作系统的简单接口,属性和方法
+Node.js 提供一组类似 UNIX（POSIX）标准的文件操作API。 Node 导入文件系统模块(fs)语法如下所示：
+var fs = require("fs")
+可以使用 url.parse 方法来解析 URL 中的参数，代码如下：
+实例
+var http = require('http');
+var url = require('url');
+var util = require('util');
+ 
+http.createServer(function(req, res){
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+ 
+    // 解析 url 参数
+    var params = url.parse(req.url, true).query;
+    res.write("网站名：" + params.name);
+    res.write("\n");
+    res.write("网站 URL：" + params.url);
+    res.end();
+ 
+}).listen(3000);
+OST 请求的内容全部的都在请求体中，http.ServerRequest 并没有一个属性内容为请求体，原因是等待请求体传输可能是一件耗时的工作。
+比如上传文件，而很多时候我们可能并不需要理会请求体的内容，恶意的POST请求会大大消耗服务器的资源，所以 node.js 默认是不会解析请求体的，当你需要的时候，需要手动来做。
+基本语法结构说明
+var http = require('http');
+var querystring = require('querystring');
+ 
+http.createServer(function(req, res){
+    // 定义了一个post变量，用于暂存请求体的信息
+    var post = '';     
+ 
+    // 通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中
+    req.on('data', function(chunk){    
+        post += chunk;
+    });
+ 
+    // 在end事件触发后，通过querystring.parse将post解析为真正的POST请求格式，然后向客户端返回。
+    req.on('end', function(){    
+        post = querystring.parse(post);
+        res.end(util.inspect(post));
+    });
+}).listen(3000);
+
+序号	模块名 & 描述
+1	OS 模块
+提供基本的系统操作函数。
+2	Path 模块
+提供了处理和转换文件路径的工具。
+3	Net 模块
+用于底层的网络通信。提供了服务端和客户端的的操作。
+4	DNS 模块
+用于解析域名。
+5	Domain 模块
+简化异步代码的异常处理，可以捕捉处理try catch无法捕捉的。
+大多数 web 服务器都支持服务端的脚本语言（php、python、ruby）等，并通过脚本语言从数据库获取数据，将结果返回给客户端浏览器。
+Node.js 教程
+Node.js 教程
+Node.js 安装配置
+Node.js 创建第一个应用
+NPM 使用介绍
+Node.js REPL
+Node.js 回调函数
+Node.js 事件循环
+Node.js EventEmitter
+Node.js Buffer
+Node.js Stream
+Node.js 模块系统
+Node.js 函数
+Node.js 路由
+Node.js 全局对象
+Node.js 常用工具
+Node.js 文件系统
+Node.js GET/POST请求
+Node.js 工具模块
+Node.js Web 模块
+Node.js Express 框架
+Node.js RESTful API
+Node.js 多进程
+Node.js JXcore 打包
+Node.js MySQL
+Node.js MongoDB
+ Node.js 工具模块 Node.js Express 框架 
+Node.js Web 模块
+什么是 Web 服务器？
+Web服务器一般指网站服务器，是指驻留于因特网上某种类型计算机的程序，Web服务器的基本功能就是提供Web信息浏览服务。它只需支持HTTP协议、HTML文档格式及URL，与客户端的网络浏览器配合。
+大多数 web 服务器都支持服务端的脚本语言（php、python、ruby）等，并通过脚本语言从数据库获取数据，将结果返回给客户端浏览器。
+以下是演示一个最基本的 HTTP 服务器架构(使用 8080 端口)，创建 server.js 文件，代码如下所示：
+实例
+var http = require('http');
+var fs = require('fs');
+var url = require('url');
+ 
+ 
+// 创建服务器
+http.createServer( function (request, response) {  
+   // 解析请求，包括文件名
+   var pathname = url.parse(request.url).pathname;
+   
+   // 输出请求的文件名
+   console.log("Request for " + pathname + " received.");
+   
+   // 从文件系统中读取请求的文件内容
+   fs.readFile(pathname.substr(1), function (err, data) {
+      if (err) {
+         console.log(err);
+         // HTTP 状态码: 404 : NOT FOUND
+         // Content Type: text/plain
+         response.writeHead(404, {'Content-Type': 'text/html'});
+      }else{             
+         // HTTP 状态码: 200 : OK
+         // Content Type: text/plain
+         response.writeHead(200, {'Content-Type': 'text/html'});    
+         
+         // 响应文件内容
+         response.write(data.toString());        
+      }
+      //  发送响应数据
+      response.end();
+   });   
+}).listen(8080);
+ 
+// 控制台会输出以下信息
+console.log('Server running at http://127.0.0.1:8080/');
+接下来我们在该目录下创建一个 index.html 文件，代码如下：
+index.html 文件
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+</head>
+<body>
+    <h1>我的第一个标题</h1>
+    <p>我的第一个段落。</p>
+</body>
+</html>
+执行 server.js 文件：
+$ node server.js
+Server running at http://127.0.0.1:8080/
+Node 创建 Web 客户端需要引入 http 模块，创建 client.js 文件，代码如下所示：
+实例
+var http = require('http');
+ 
+// 用于请求的选项
+var options = {
+   host: 'localhost',
+   port: '8080',
+   path: '/index.html'  
+};
+ 
+// 处理响应的回调函数
+var callback = function(response){
+   // 不断更新数据
+   var body = '';
+   response.on('data', function(data) {
+      body += data;
+   });
+   
+   response.on('end', function() {
+      // 数据接收完成
+      console.log(body);
+   });
+}
+// 向服务端发送请求
+var req = http.request(options, callback);
+req.end();
+Express 框架核心特性：
+可以设置中间件来响应 HTTP 请求。
+定义了路由表用于执行不同的 HTTP 请求动作。
+可以通过向模板传递参数来动态渲染 HTML 页面。
+Express 提供了内置的中间件 express.static 来设置静态文件如：图片， CSS, JavaScript 等。
+文件上传
+以下我们创建一个用于上传文件的表单，使用 POST 方法，表单 enctype 属性设置为 multipart/form-data。
+index.htm 文件代码：
+<html>
+<head>
+<title>文件上传表单</title>
+</head>
+<body>
+<h3>文件上传：</h3>
+选择一个文件上传: <br />
+<form action="/file_upload" method="post" enctype="multipart/form-data">
+<input type="file" name="image" size="50" />
+<br />
+<input type="submit" value="上传文件" />
+</form>
+</body>
+</html>
+
+server.js 文件代码：
+var express = require('express');
+var app = express();
+var fs = require("fs");
+ 
+var bodyParser = require('body-parser');
+var multer  = require('multer');
+ 
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(multer({ dest: '/tmp/'}).array('image'));
+ 
+app.get('/index.htm', function (req, res) {
+   res.sendFile( __dirname + "/" + "index.htm" );
+})
+ 
+app.post('/file_upload', function (req, res) {
+ 
+   console.log(req.files[0]);  // 上传的文件信息
+ 
+   var des_file = __dirname + "/" + req.files[0].originalname;
+   fs.readFile( req.files[0].path, function (err, data) {
+        fs.writeFile(des_file, data, function (err) {
+         if( err ){
+              console.log( err );
+         }else{
+               response = {
+                   message:'File uploaded successfully', 
+                   filename:req.files[0].originalname
+              };
+          }
+          console.log( response );
+          res.end( JSON.stringify( response ) );
+       });
+   });
+})
+ 
+var server = app.listen(8081, function () {
+ 
+  var host = server.address().address
+  var port = server.address().port
+ 
+  console.log("应用实例，访问地址为 http://%s:%s", host, port)
+ 
+})
+执行以上代码：
+$ node server.js 
+应用实例，访问地址为 http://0.0.0.0:8081
+可以使用中间件向 Node.js 服务器发送 cookie 信息，以下代码输出了客户端发送的 cookie 信息：
+express_cookie.js 文件代码：
+// express_cookie.js 文件
+var express      = require('express')
+var cookieParser = require('cookie-parser')
+var util = require('util');
+ 
+var app = express()
+app.use(cookieParser())
+ 
+app.get('/', function(req, res) {
+    console.log("Cookies: " + util.inspect(req.cookies));
+})
+ 
+app.listen(8081)
+执行以上代码：
+$ node express_cookie.js 
+表述性状态转移是一组架构约束条件和原则。满足这些约束条件和原则的应用程序或设计就是RESTful。需要注意的是，REST是设计风格而不是标准。
+REST通常基于使用HTTP，URI，和XML（标准通用标记语言下的一个子集）以及HTML（标准通用标记语言下的一个应用）这些现有的广泛流行的协议和标准。
+REST 通常使用 JSON 数据格式。
+RESTful Web Services
+JXcore 是一个支持多线程的 Node.js 发行版本，基本不需要对你现有的代码做任何改动就可以直接线程安全地以多线程运行。
+Node.js 是以单线程的模式运行的，但它使用的是事件驱动来处理并发，这样有助于我们在多核 cpu 的系统上创建多个子进程，从而提高性能。
+Node 提供了 child_process 模块来创建子进程，方法有：
+exec - child_process.exec 使用子进程执行命令，缓存子进程的输出，并将子进程的输出以回调函数参数的形式返回。
+spawn - child_process.spawn 使用指定的命令行参数创建新进程。
+
+fork - child_process.fork 是 spawn()的特殊形式，用于在子进程中运行的模块，如 fork('./son.js') 相当于 spawn('node', ['./son.js']) 。与spawn方法不同的是，fork会在父进程与子进程之间，建立一个通信管道，用于进程之间的通信。
